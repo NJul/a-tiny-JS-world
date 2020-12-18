@@ -8,6 +8,50 @@
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
+const dog = {
+  species: 'dog',
+  name: 'Chica',
+  gender: 'female',
+  legs: 4,
+  hands: 0,
+  saying: 'woof-woof!',
+};
+
+const cat = {
+  species: 'cat',
+  legs: 4,
+  hands: 0,
+  name: 'Barsik',
+  gender: 'male',
+  saying: 'meow-meow',
+};
+
+const woman = {
+  species: 'woman',
+  legs: 2,
+  hands: 2,
+  name: 'Lara',
+  gender: 'female',
+  saying: `There are things that shouldn't be found`,
+};
+
+const man = {
+  species: 'man',
+  legs: 2,
+  hands: 2,
+  name: 'Arnold',
+  gender: 'male',
+  saying: `I'll be back`,
+};
+
+const catWoman = {
+  species: 'cat-woman',
+  legs: 2,
+  hands: 2,
+  name: 'Selina',
+  gender: 'female',
+  saying: cat.saying,
+};
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -18,6 +62,20 @@
    so code reviewers might focus on a single file that is index.js.
    */
 
+print(
+  dog.species +
+    ';' +
+    dog.name +
+    ';' +
+    dog.gender +
+    ';' +
+    dog.legs +
+    ';' +
+    dog.hands +
+    ';' +
+    dog.saying
+);
+
 /* Print examples:
    print('ABC');
    print('<strong>ABC</strong>');
@@ -27,5 +85,3 @@
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-
-
