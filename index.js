@@ -27,7 +27,7 @@ const cat = {
 };
 
 const woman = {
-  species: 'woman',
+  species: 'human',
   legs: 2,
   hands: 2,
   name: 'Lara',
@@ -36,7 +36,7 @@ const woman = {
 };
 
 const man = {
-  species: 'man',
+  species: 'human',
   legs: 2,
   hands: 2,
   name: 'Arnold',
@@ -62,19 +62,15 @@ const catWoman = {
    so code reviewers might focus on a single file that is index.js.
    */
 
-print(
-  dog.species +
-    ';' +
-    dog.name +
-    ';' +
-    dog.gender +
-    ';' +
-    dog.legs +
-    ';' +
-    dog.hands +
-    ';' +
-    dog.saying
-);
+//  Output: human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny
+
+const allInhabitants = [man, woman, dog, cat, catWoman];
+
+const listEntry = ({ species, name, gender, hands, legs, saying }) => {
+  return `${species}, ${name}, ${gender}, ${hands}, ${legs}, ${saying}`;
+};
+
+allInhabitants.forEach((inhabitant) => print(listEntry(inhabitant), 'div'));
 
 /* Print examples:
    print('ABC');
