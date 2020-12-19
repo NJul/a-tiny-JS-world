@@ -1,8 +1,8 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
+   Code repository: _https://github.com/NJul/a-tiny-JS-world_
+   Web app: _https://njul.github.io/a-tiny-JS-world/_
    */
 
 // ======== OBJECTS DEFINITIONS ========
@@ -15,6 +15,7 @@ const dog = {
   legs: 4,
   hands: 0,
   saying: 'woof-woof!',
+  friends: ['Lara', 'Arnold'],
 };
 
 const cat = {
@@ -24,6 +25,7 @@ const cat = {
   name: 'Barsik',
   gender: 'male',
   saying: 'meow-meow',
+  friends: [],
 };
 
 const woman = {
@@ -33,6 +35,7 @@ const woman = {
   name: 'Lara',
   gender: 'female',
   saying: `There are things that shouldn't be found`,
+  friends: ['Chica', 'Arnold'],
 };
 
 const man = {
@@ -42,6 +45,7 @@ const man = {
   name: 'Arnold',
   gender: 'male',
   saying: `I'll be back`,
+  friends: [],
 };
 
 const catWoman = {
@@ -51,6 +55,7 @@ const catWoman = {
   name: 'Selina',
   gender: 'female',
   saying: cat.saying,
+  friends: ['Barsik'],
 };
 
 // ======== OUTPUT ========
@@ -66,8 +71,9 @@ const catWoman = {
 
 const allInhabitants = [man, woman, dog, cat, catWoman];
 
-const listEntry = ({ species, name, gender, hands, legs, saying }) => {
-  return `${species}, ${name}, ${gender}, ${hands}, ${legs}, ${saying}`;
+const listEntry = ({ species, name, gender, legs, hands, saying, friends }) => {
+  return `${species}; ${name}; ${gender}; ${legs}; ${hands}; ${saying};
+  ${friends.join(', ') || '0'}`;
 };
 
 allInhabitants.forEach((inhabitant) => print(listEntry(inhabitant), 'div'));
