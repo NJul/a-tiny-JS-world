@@ -1,62 +1,69 @@
 /* Refer to https://github.com/OleksiyRudenko/a-tiny-JS-world for the task details
    Complete the below for code reviewers' convenience:
 
-   Code repository: _https://github.com/NJul/a-tiny-JS-world_
-   Web app: _https://njul.github.io/a-tiny-JS-world/_
-   */
+   Code repository: https://github.com/NJul/a-tiny-JS-world
+   Web app: https://njul.github.io/a-tiny-JS-world/
+  */
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
 
-const dog = {
-  species: 'dog',
-  name: 'Chica',
-  gender: 'female',
-  legs: 4,
-  hands: 0,
-  saying: 'woof-woof!',
-  friends: ['Lara', 'Arnold'],
-};
+class Inhabitant {
+  constructor(species, name, gender, legs, hands, saying, friends) {
+    this.species = species;
+    this.name = name;
+    this.gender = gender;
+    this.legs = legs;
+    this.hands = hands;
+    this.saying = saying;
+    this.friends = Array.isArray(friends) ? friends.join(', ') : 'no one';
+  }
+  toString() {
+    return `My name is <strong>${this.name}</strong>. I'm a ${this.species}. I'm a ${this.gender}. I have ${this.legs} legs and ${this.hands} hands. My friends: ${this.friends}. <strong>${this.saying}</strong>`;
+  }
+}
 
-const cat = {
-  species: 'cat',
-  legs: 4,
-  hands: 0,
-  name: 'Barsik',
-  gender: 'male',
-  saying: 'meow-meow',
-  friends: [],
-};
+class Human extends Inhabitant {
+  constructor(name, gender, saying, friends) {
+    super('human', name, gender, 2, 2, saying, friends);
+  }
+}
 
-const woman = {
-  species: 'human',
-  legs: 2,
-  hands: 2,
-  name: 'Lara',
-  gender: 'female',
-  saying: `There are things that shouldn't be found`,
-  friends: ['Chica', 'Arnold'],
-};
+class Dog extends Inhabitant {
+  constructor(name, gender, friends) {
+    super('dog', name, gender, 4, 0, `Woof-woof!`, friends);
+  }
+}
 
-const man = {
-  species: 'human',
-  legs: 2,
-  hands: 2,
-  name: 'Arnold',
-  gender: 'male',
-  saying: `I'll be back`,
-  friends: [],
-};
+class Cat extends Inhabitant {
+  constructor(name, gender, friends) {
+    super('cat', name, gender, 4, 0, 'Meow-meow', friends);
+  }
+}
 
-const catWoman = {
-  species: 'cat-woman',
-  legs: 2,
-  hands: 2,
-  name: 'Selina',
-  gender: 'female',
-  saying: cat.saying,
-  friends: ['Barsik'],
-};
+class CatWoman extends Cat {
+  constructor(name, gender, friends) {
+    super(name, gender, friends);
+    this.species = 'cat-woman';
+    this.legs = 2;
+    this.hands = 2;
+  }
+}
+
+const man = new Human('Arnold', 'male', `I'll be back`);
+
+const woman = new Human(
+  'Lara',
+  'female',
+  `There are things that shouldn't be found`,
+  ['Chica', 'Arnold']
+);
+
+const dog = new Dog('Chica', 'female', ['Lara', 'Arnold']);
+
+const cat = new Cat('Barsik', 'male');
+
+const catWoman = new CatWoman('Selina', 'female', ['Barsik']);
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -67,16 +74,11 @@ const catWoman = {
    so code reviewers might focus on a single file that is index.js.
    */
 
-//  Output: human; John; male; 2; 2; Hello world!; Rex, Tom, Jenny
+/* Output: My name is Arnold. I'm a human. I'm a male. I have 2 legs and 2 hands. My friends: no one. I'll be back */
 
 const allInhabitants = [man, woman, dog, cat, catWoman];
 
-const listEntry = ({ species, name, gender, legs, hands, saying, friends }) => {
-  return `${species}; ${name}; ${gender}; ${legs}; ${hands}; ${saying};
-  ${friends.join(', ') || '0'}`;
-};
-
-allInhabitants.forEach((inhabitant) => print(listEntry(inhabitant), 'div'));
+allInhabitants.forEach((inhabitant) => print(inhabitant), 'div');
 
 /* Print examples:
    print('ABC');
